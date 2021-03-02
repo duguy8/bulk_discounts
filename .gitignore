@@ -28,3 +28,6 @@
 
 # Ignore simplecov coverage
 coverage
+
+# Ignore active_designer
+active_designer
