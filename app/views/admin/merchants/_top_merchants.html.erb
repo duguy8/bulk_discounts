@@ -1,0 +1,9 @@
+<section id="top_merchants">
+<h3>Top Merchants By Revenue: </h3>
+  <ul>
+    <% merchants.top_merchants.each do |merchant| %>
+      <li><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %>
+      Total Revenue: $<%= merchant.revenue %></li>
+    <% end %>
+  </ul>
+</section>

@@ -85,4 +85,51 @@ RSpec.describe Merchant, type: :model do
       end
     end
   end
+
+  describe 'class methods' do
+    before :each do
+      @merchant1 = create(:merchant)
+      @merchant2 = create(:merchant)
+      @merchant3 = create(:merchant)
+      @merchant4 = create(:merchant)
+      @merchant5 = create(:merchant)
+      @merchant6 = create(:merchant)
+
+      @item1 = create(:item, merchant_id: @merchant1.id)
+      @item2 = create(:item, merchant_id: @merchant2.id)
+      @item3 = create(:item, merchant_id: @merchant3.id)
+      @item4 = create(:item, merchant_id: @merchant4.id)
+      @item5 = create(:item, merchant_id: @merchant5.id)
+      @item6 = create(:item, merchant_id: @merchant6.id)
+
+      @invoice1 = create(:invoice)
+      @invoice2 = create(:invoice)
+      @invoice3 = create(:invoice)
+      @invoice4 = create(:invoice)
+      @invoice5 = create(:invoice)
+      @invoice6 = create(:invoice)
+
+      @invoice_item1 = create(:invoice_item, invoice_id: @invoice1.id, item_id: @item1.id, status: 1, quantity: 6, unit_price: 100)
+      @invoice_item2 = create(:invoice_item, invoice_id: @invoice2.id, item_id: @item2.id, status: 1, quantity: 5, unit_price: 100)
+      @invoice_item3 = create(:invoice_item, invoice_id: @invoice3.id, item_id: @item3.id, status: 0, quantity: 4, unit_price: 100)
+      @invoice_item4 = create(:invoice_item, invoice_id: @invoice4.id, item_id: @item4.id, status: 2, quantity: 3, unit_price: 100)
+      @invoice_item5 = create(:invoice_item, invoice_id: @invoice5.id, item_id: @item5.id, status: 0, quantity: 2, unit_price: 100)
+      @invoice_item6 = create(:invoice_item, invoice_id: @invoice6.id, item_id: @item6.id, status: 2, quantity: 1, unit_price: 100)
+
+      @transactions = create_list(:transaction, 6, invoice_id: @invoice_item1.invoice.id, result: "success")
+      @transactions2 = create_list(:transaction, 7, invoice_id: @invoice_item2.invoice.id, result: "success")
+      @transactions3 = create_list(:transaction, 8, invoice_id: @invoice_item3.invoice.id, result: "success")
+      @transactions4 = create_list(:transaction, 9, invoice_id: @invoice_item4.invoice.id, result: "success")
+      @transactions5 = create_list(:transaction, 10, invoice_id: @invoice_item5.invoice.id, result: "success")
+      @transactions6 = create_list(:transaction, 11, invoice_id: @invoice_item6.invoice.id, result: "failed")
+    end
+    it 'Merchant::top_merchants' do
+      expect(Merchant.top_merchants.first.name).to eq(@merchant1.name)
+      expect(Merchant.top_merchants.second.name).to eq(@merchant2.name)
+      expect(Merchant.top_merchants.third.name).to eq(@merchant3.name)
+      expect(Merchant.top_merchants.fourth.name).to eq(@merchant4.name)
+      expect(Merchant.top_merchants[4].name).to eq(@merchant5.name)
+      expect(Merchant.top_merchants).not_to include(@merchant6)
+    end
+  end
 end
