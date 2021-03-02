@@ -13,5 +13,6 @@ class Invoice < ApplicationRecord
     .where('invoice_items.status != ?', 2)
     .select('invoices.*, invoice_items.invoice_id AS invoice_id, invoices.created_at AS invoice_created_at')
     .order('invoice_created_at')
+    .distinct
   end
 end
