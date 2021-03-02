@@ -4,6 +4,7 @@ require "rails_helper"
 RSpec.describe "When I visit the admin merchants index" do
   before :each do
     @merchants = create_list(:merchant, 5)
+    @bad_merchant = create(:merchant, status: true)
   end
 
   describe "I see the name of each merchant in the system" do
@@ -51,6 +52,48 @@ RSpec.describe "When I visit the admin merchants index" do
         click_button "Update Merchant"
 
         expect(page).to have_content("Required Information Missing")
+      end
+    end
+
+    describe "When I visit the admin merchants index" do
+      it "Has a button to enable or disable the merchant" do
+        visit admin_merchants_path
+        # save_and_open_page
+        within("#merchant-#{@merchants.first.id}") do
+          expect(page).to have_button("Enable Merchant")
+        end
+      end
+
+      it "Redirects to admin merchant index with status changed" do
+        visit admin_merchants_path
+
+        within("#merchant-#{@merchants.first.id}") do
+          click_button("Enable Merchant")
+        end
+
+        expect(current_path).to eq(admin_merchants_path)
+
+        within("#merchant-#{@merchants.first.id}") do
+          expect(page).to have_button("Disable Merchant")
+        end
+      end
+
+      it "Each merchant is in appropriate section enabled/disabled" do
+        visit admin_merchants_path
+
+        within(".enabled_merchants") do
+          expect(page).to have_content(@bad_merchant.name)
+          expect(page).to have_button("Disable Merchant")
+        end
+
+        within(".disabled_merchants") do
+          expect(page).to have_content(@merchants.first.name)
+          expect(page).to have_content(@merchants.last.name)
+        end
+
+        within("#merchant-#{@merchants.first.id}") do
+          expect(page).to have_button("Enable Merchant")
+        end
       end
     end
   end

@@ -42,6 +42,14 @@ class Merchant < ApplicationRecord
     .order('invoice_created_at')
   end
 
+  def self.enabled
+    where(status: true)
+  end
+
+  def self.disabled
+    where(status: false)
+  end
+
   def enabled_items
     items.where(status: true)
   end

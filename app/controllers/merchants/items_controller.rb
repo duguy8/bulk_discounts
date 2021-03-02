@@ -27,24 +27,30 @@ class Merchants::ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params) && !params[:status]
+    if params[:status]
+      button_logic
+    elsif @item.update(item_params) && !params[:status]
       flash[:notice] = "Item Succesfully Updated"
       redirect_to merchant_item_path(@item.merchant, @item)
     elsif !@item.update(item_params)
       flash[:notice] = "Required Information Missing"
       redirect_to edit_merchant_item_path(@item.merchant, @item)
-    elsif params[:status] == "disable"
+    end
+  end
+
+  private
+
+  def button_logic
+    if params[:status] == "disable"
       @item.disable_item
       flash[:notice] = "#{@item.name} Disabled"
       redirect_to merchant_items_path(@item.merchant)
-    elsif params[:status] == "enable"
+    else
       @item.enable_item
       flash[:notice] = "#{@item.name} Enabled"
       redirect_to merchant_items_path(@item.merchant)
     end
   end
-
-  private
 
   def item_params
     params.permit(:name, :description, :unit_price)
