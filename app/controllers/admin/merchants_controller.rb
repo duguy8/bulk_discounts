@@ -5,6 +5,20 @@ class Admin::MerchantsController < ApplicationController
     @merchants = Merchant.all
   end
 
+  def new
+  end
+
+  def create
+    @merchant = Merchant.new(merchant_params)
+    if @merchant.save
+      flash[:notice] = "Merchant Created Successfully"
+      redirect_to admin_merchants_path
+    else
+      flash[:notice] = "Required Information Missing"
+      render :new
+    end
+  end
+
   def show
   end
 
