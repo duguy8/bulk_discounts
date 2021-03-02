@@ -7,6 +7,15 @@ class Merchant < ApplicationRecord
   has_many :transactions, through: :invoices
   has_many :customers, through: :invoices
 
+  def self.top_merchants
+    left_joins(:transactions)
+    .where('transactions.result = ?', "success")
+    .group('merchants.id')
+    .select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue')
+    .order('revenue DESC')
+    .limit(5)
+  end
+
   def most_popular_items
     items.joins(:invoice_items, :transactions)
       .where('transactions.result = ?', "success")
@@ -31,6 +40,14 @@ class Merchant < ApplicationRecord
     .where('invoice_items.status != ?', 2)
     .select('items.*, invoice_items.invoice_id AS invoice_id, invoices.created_at AS invoice_created_at')
     .order('invoice_created_at')
+  end
+
+  def self.enabled
+    where(status: true)
+  end
+
+  def self.disabled
+    where(status: false)
   end
 
   def enabled_items

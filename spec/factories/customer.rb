@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :customer do
-    first_name { Faker::JapaneseMedia::Naruto.character }
-    last_name { Faker::JapaneseMedia::DragonBall.race }
+    sequence(:first_name) { |n| "#{Faker::JapaneseMedia::Naruto.character} #{n}" }
+    sequence(:last_name) { |n| "#{Faker::JapaneseMedia::DragonBall.race} #{n}" }
   end
 end

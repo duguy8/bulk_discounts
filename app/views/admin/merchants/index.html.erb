@@ -1,0 +1,4 @@
+<h1>Admins Merchant Index</h1>
+<%= link_to "Create a new Merchant", new_admin_merchant_path %>
+<%= render partial: "merchants", locals: { merchants: @merchants } %>
+<%= render partial: "top_merchants", locals: { merchants: @merchants } %>
