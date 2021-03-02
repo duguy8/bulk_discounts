@@ -1,5 +1,5 @@
 <ul>
   <% merchants.each do |merchant| %>
-    <li><%= merchant.name %></li>
-<% end %>
+    <li><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %></li>
+  <% end %>
 </ul>

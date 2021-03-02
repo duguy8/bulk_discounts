@@ -13,5 +13,14 @@ RSpec.describe "When I visit the admin merchants index" do
       expect(page).to have_content(@merchants.first.name)
       expect(page).to have_content(@merchants.last.name)
     end
+
+    it "Name is a link to their admin/merchants/:id pages" do
+      visit admin_merchants_path
+
+      click_link("#{@merchants.first.name}")
+
+      expect(current_path).to eq(admin_merchant_path(@merchants.first))
+      expect(page).to have_content(@merchants.first.name)
+    end
   end
 end
