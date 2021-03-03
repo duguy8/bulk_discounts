@@ -95,6 +95,15 @@ RSpec.describe "When I visit the admin merchants index" do
           expect(page).to have_button("Enable Merchant")
         end
       end
+      it "displays flash notice on disable" do
+        visit admin_merchants_path
+
+        within("#merchant-#{@bad_merchant.id}") do
+          click_button("Disable Merchant")
+        end
+
+        expect(page).to have_content("#{@bad_merchant.name} Disabled")
+      end
     end
   end
 end
