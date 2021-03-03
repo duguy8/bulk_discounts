@@ -10,7 +10,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       customer = Customer.new({
-        id: row[0],
+        # id: row[0],
         first_name: row[1],
         last_name: row[2],
         created_at: row[3],
@@ -33,7 +33,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       invoice_item = InvoiceItem.new({
-        id: row[0],
+        # id: row[0],
         item_id: row[1],
         invoice_id: row[2],
         quantity: row[3],
@@ -59,7 +59,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       invoice = Invoice.new({
-        id: row[0],
+        # id: row[0],
         customer_id: row[1],
         status: row[2],
         created_at: row[3],
@@ -82,7 +82,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       item = Item.new({
-        id: row[0],
+        # id: row[0],
         name: row[1],
         description: row[2],
         unit_price: row[3],
@@ -107,7 +107,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       merchant = Merchant.new({
-        id: row[0],
+        # id: row[0],
         name: row[1],
         created_at: row[2],
         updated_at: row[3]
@@ -129,7 +129,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       transaction = Transaction.new({
-        id: row[0],
+        # id: row[0],
         invoice_id: row[1],
         credit_card_number: row[2],
         credit_card_expiration_date: row[3],
@@ -173,7 +173,7 @@ namespace :csv_load do
 
     CSV.parse(file, headers: true) do |row|
       customer = Customer.new({
-        id: row[0],
+        # id: row[0],
         first_name: row[1],
         last_name: row[2],
         created_at: row[3],
@@ -188,7 +188,7 @@ namespace :csv_load do
 
   CSV.parse(file, headers: true) do |row|
     invoice = Invoice.new({
-      id: row[0],
+      # id: row[0],
       customer_id: row[1],
       status: row[2],
       created_at: row[3],
@@ -203,7 +203,7 @@ namespace :csv_load do
 
   CSV.parse(file, headers: true) do |row|
     merchant = Merchant.new({
-      id: row[0],
+      # id: row[0],
       name: row[1],
       created_at: row[2],
       updated_at: row[3]
@@ -217,7 +217,7 @@ namespace :csv_load do
 
   CSV.parse(file, headers: true) do |row|
     item = Item.new({
-      id: row[0],
+      # id: row[0],
       name: row[1],
       description: row[2],
       unit_price: row[3],
@@ -234,7 +234,7 @@ namespace :csv_load do
 
   CSV.parse(file, headers: true) do |row|
     transaction = Transaction.new({
-      id: row[0],
+      # id: row[0],
       invoice_id: row[1],
       credit_card_number: row[2],
       credit_card_expiration_date: row[3],
@@ -251,7 +251,7 @@ namespace :csv_load do
 
   CSV.parse(file, headers: true) do |row|
     invoice_item = InvoiceItem.new({
-      id: row[0],
+      # id: row[0],
       item_id: row[1],
       invoice_id: row[2],
       quantity: row[3],
