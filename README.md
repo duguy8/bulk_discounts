@@ -1,8 +1,15 @@
 # Little Esty Shop
 
-## Background and Description
+## Overview
+- This Rails application emulates a business intelligence application which displays records and their associated records, and allows users to perform CRUD actions on these records. Resources demonstrate one-to-many and many-to-many relationships. 
 
-"Little Esty Shop" is a group project that requires students to build a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices.
+## Core Database Relationships
+
+
+## CSV Tasks
+- To clear the CSV data: `rails csv_load:delete`
+- To load all CSV files: `rails csv_load:all`
+- To load 
 
 ## Learning Goals
 - Practice designing a normalized database schema and defining model relationships
