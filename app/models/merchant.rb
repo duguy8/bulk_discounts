@@ -42,6 +42,13 @@ class Merchant < ApplicationRecord
     .order('invoice_created_at')
   end
 
+  def top_selling_date
+    sales_by_day = invoices.joins(:invoice_items)
+    .group("date_trunc('day', invoices.created_at)")
+    .sum('invoice_items.quantity * invoice_items.unit_price')
+    sales_by_day.key(sales_by_day.values.max).strftime("%A, %B %d, %Y")
+  end
+
   def self.enabled
     where(status: true)
   end
