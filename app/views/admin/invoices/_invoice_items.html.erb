@@ -1,0 +1,9 @@
+<% invoice.invoice_items.each do |invoice_item| %>
+<ul>
+  <li><%= invoice_item.item.name %>
+      <%= invoice_item.quantity %>
+      <%= invoice_item.unit_price %>
+      <%= invoice_item.status %>
+  </li>
+</ul>
+<% end %>
