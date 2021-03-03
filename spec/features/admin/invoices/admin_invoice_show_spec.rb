@@ -14,7 +14,7 @@ RSpec.describe 'the admin invoice show page' do
     @item6 = create(:item, merchant_id: @merchant1.id)
     @item7 = create(:item, merchant_id: @merchant1.id)
 
-    @invoice1 = create(:invoice, created_at: "2013-03-25 09:54:09 UTC", customer_id: @customer1.id)
+    @invoice1 = create(:invoice, status: 1, created_at: "2013-03-25 09:54:09 UTC", customer_id: @customer1.id)
 
     @invoice_item1 = create(:invoice_item, invoice_id: @invoice1.id, item_id: @item1.id, status: 1, quantity: 6, unit_price: 101)
     @invoice_item2 = create(:invoice_item, invoice_id: @invoice1.id, item_id: @item2.id, status: 2, quantity: 5, unit_price: 102)
@@ -40,7 +40,6 @@ RSpec.describe 'the admin invoice show page' do
 
   it "displays information for all items on invoice" do
     visit admin_invoice_path(@invoice1)
-
 
     expect(page).to have_content(@item1.name)
     expect(page).to have_content(@item2.name)
@@ -74,5 +73,15 @@ RSpec.describe 'the admin invoice show page' do
   it "displays total invoice revenue" do
     visit admin_invoice_path(@invoice1)
     expect(page).to have_content("Total Invoice Revenue: $2263")
+  end
+
+  it "displays item status in dropdown" do
+    visit admin_invoice_path(@invoice1)
+
+    expect(page).to have_select("invoice_status", selected: "cancelled")
+    select 'completed', from: "invoice_status"
+    click_button("Update Invoice Status")
+    expect(current_path).to eq(admin_invoice_path(@invoice1))
+    expect(page).to have_select("invoice_status", selected: "completed")
   end
 end
