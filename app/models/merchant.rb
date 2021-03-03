@@ -64,4 +64,12 @@ class Merchant < ApplicationRecord
   def disabled_items
     items.where(status: false)
   end
+
+  def enable_merchant
+    update(status: true)
+  end
+
+  def disable_merchant
+    update(status: false)
+  end
 end

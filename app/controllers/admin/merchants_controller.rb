@@ -41,11 +41,11 @@ class Admin::MerchantsController < ApplicationController
 
   def button_logic
     if params[:status] == "enable"
-      @merchant.update(status: true)
+      @merchant.enable_merchant
       flash[:notice] = "#{@merchant.name} Enabled"
       redirect_to admin_merchants_path
     else
-      @merchant.update(status: false)
+      @merchant.disable_merchant
       flash[:notice] = "#{@merchant.name} Disabled"
       redirect_to admin_merchants_path
     end
