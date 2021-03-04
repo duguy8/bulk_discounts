@@ -5,13 +5,9 @@ class Merchant < ApplicationRecord
   has_many :invoices, through: :invoice_items
   has_many :transactions, through: :invoices
   has_many :customers, through: :invoices
-<<<<<<< HEAD
   scope :enabled, -> { where(status: true) }
   scope :disabled, -> { where(status: false) }
-=======
-  scope :enabled, -> { where(status:true) }
-  scope :disabled, -> { where(status:false) }
->>>>>>> e504f6956a7332439e5f4bb952c36268dae4cbfa
+
 
   def self.top_merchants
     left_joins(:transactions)
