@@ -1,6 +1,3 @@
-# require "json"
-# require "faraday"
-
 class GitService
   def self.repo_name
     get_data('https://api.github.com/repos/duguy8/little-esty-shop')[:name]

@@ -26,7 +26,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+#api gems
 gem 'faraday'
+# gem 'vcr'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -48,6 +52,7 @@ group :development, :test do
   gem 'active_designer'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'vcr'
 end
 
 group :development do
