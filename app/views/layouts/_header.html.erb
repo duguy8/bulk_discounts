@@ -1,0 +1,8 @@
+<section>
+  <h5> <%= GitService.repo_name %> </h5>
+  <% GitService.screen_contributors.each do |contributor| %>
+    <%= contributor[:login] %>
+    <%= contributor[:contributions] %>
+  <% end %>
+  <%= GitService.prs %>
+</section>
