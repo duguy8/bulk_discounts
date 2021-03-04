@@ -1,15 +1,38 @@
 # Little Esty Shop
 
 ## Overview
-- This Rails application emulates a business intelligence application which displays records and their associated records, and allows users to perform CRUD actions on these records. Resources demonstrate one-to-many and many-to-many relationships. 
+- This Rails application emulates a business intelligence application which displays records and their associated records, and allows users to perform CRUD actions on these records. Resources demonstrate one-to-many and many-to-many relationships.
+
+## Heroku Deployment
+- Status: Deployed
+- Visit: https://secret-reaches-07833.herokuapp.com/
 
 ## Core Database Relationships
 
 
 ## CSV Tasks
+This application uses custom rake tasks to import CSV data to databse tables
+
 - To clear the CSV data: `rails csv_load:delete`
 - To load all CSV files: `rails csv_load:all`
 - To load 
+
+## ActiveDesigner
+
+- To create a visual of the database: 
+`active_designer --create ./db/schema.rb`
+
+- To view it in a webpage: 
+`open active_designer/index.html`
+
+## Gem Information
+   ### Testing Gems
+- RSpec
+- SimpleCov
+- Capybara
+- ShouldaMatchers
+- FactoryBot
+- launchy
 
 ## Learning Goals
 - Practice designing a normalized database schema and defining model relationships
