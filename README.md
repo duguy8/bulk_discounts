@@ -11,11 +11,11 @@
 
 
 ## CSV Tasks
-This application uses custom rake tasks to import CSV data to databse tables
+This application uses custom rake tasks to import CSV data to database tables:
 <ul>
    <li>To clear the CSV data: `rails csv_load:delete`</li>
    <li>To load all CSV files: `rails csv_load:all`</li>
-   <li>To load individual CSV files: 'rails csv_load:<file></li>
+   <li>To load individual CSV files: 'rails csv_load:{file}</li>
 </ul>
 ## ActiveDesigner
 
