@@ -52,7 +52,6 @@ group :development, :test do
   gem 'active_designer'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'vcr'
 end
 
 group :development do
