@@ -1,11 +1,12 @@
 class Merchant < ApplicationRecord
   validates_presence_of :name
-
   has_many :items
   has_many :invoice_items, through: :items
   has_many :invoices, through: :invoice_items
   has_many :transactions, through: :invoices
   has_many :customers, through: :invoices
+  scope :enabled, -> { where(status:true) }
+  scope :disabled, -> { where(status:false) }
 
   def self.top_merchants
     left_joins(:transactions)
@@ -47,14 +48,6 @@ class Merchant < ApplicationRecord
     .group("date_trunc('day', invoices.created_at)")
     .sum('invoice_items.quantity * invoice_items.unit_price')
     sales_by_day.key(sales_by_day.values.max).strftime("%A, %B %d, %Y")
-  end
-
-  def self.enabled
-    where(status: true)
-  end
-
-  def self.disabled
-    where(status: false)
   end
 
   def enabled_items
