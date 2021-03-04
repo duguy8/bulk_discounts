@@ -1,5 +1,8 @@
 # Little Esty Shop
 
+## Bulk Discounts
+- Added bulk discounts that can apply to a merchants items when bought in bulk.
+
 ## Overview
 - This Rails application emulates a business intelligence application which displays records and their associated records, and allows users to perform CRUD actions on these records. Resources demonstrate one-to-many and many-to-many relationships.
 

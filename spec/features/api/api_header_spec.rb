@@ -9,7 +9,10 @@ RSpec.describe "api information in page headers" do
 
     visit admin_index_path
 
+<<<<<<< HEAD
     expect(page).to have_content("little-esty-shop")
+=======
+>>>>>>> e504f6956a7332439e5f4bb952c36268dae4cbfa
     expect(page).to have_content("little-esty-shop")
   end
 
@@ -30,7 +33,11 @@ RSpec.describe "api information in page headers" do
 
   it 'shows number of prs' do
     visit admin_index_path
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> e504f6956a7332439e5f4bb952c36268dae4cbfa
     expect(page).to have_content("#{GitService.prs}")
     expect(page).to have_content("#{GitService.prs}")
   end
