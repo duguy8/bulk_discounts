@@ -34,6 +34,9 @@ This application uses custom rake tasks to import CSV data to database tables:
 - FactoryBot
 - launchy
 
+   ### API Gems
+- Faraday
+
 ## Learning Goals
 - Practice designing a normalized database schema and defining model relationships
 - Utilize advanced routing techniques including namespacing to organize and group like functionality together.
