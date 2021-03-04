@@ -263,8 +263,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-<<<<<<< HEAD
-   2.2.7
-=======
    2.2.13
->>>>>>> e504f6956a7332439e5f4bb952c36268dae4cbfa
