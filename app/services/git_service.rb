@@ -20,7 +20,7 @@ class GitService
   end
 
   def self.prs
-    get_data('https://api.github.com/repos/duguy8/little-esty-shop').length
+    get_data("https://api.github.com/repos/duguy8/little-esty-shop/pulls?state=all").length
   end
 
   def self.get_data(url)
