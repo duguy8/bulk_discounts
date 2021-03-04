@@ -29,15 +29,18 @@ This application uses custom rake tasks to import CSV data to database tables:
 
 ## Gem Information
    ### Testing Gems
-- RSpec
-- SimpleCov
-- Capybara
-- ShouldaMatchers
-- FactoryBot
-- launchy
+<ul>
+   <li>RSpec</li>
+   <li>SimpleCov</li>
+   <li>Capybara</li>
+   <li>ShouldaMatchers</li>
+   <li>FactoryBot</li>
+   <li>launchy</li>
+   <li>orderly</li>
 
    ### API Gems
-- Faraday
+<li>Faraday</li>
+</ul
 
 ## Learning Goals
 - Practice designing a normalized database schema and defining model relationships
@@ -64,13 +67,3 @@ This project requires Ruby 2.5.3.
     * `rails db:create`
 * Run the test suite with `bundle exec rspec`.
 * Run your development server with `rails s` to see the app in action.
-
-## Phases
-
-1. [Database Setup](./doc/db_setup.md)
-1. [User Stories](./doc/user_stories.md)
-1. [Extensions](./doc/extensions.md)
-
-## Evaluation
-
-At the end of the project, you will be assessed based on [this Rubric](./doc/rubric.md)
