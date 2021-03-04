@@ -36,7 +36,8 @@ This application uses custom rake tasks to import CSV data to database tables:
    <li>ShouldaMatchers</li>
    <li>FactoryBot</li>
    <li>launchy</li>
-   <li>orderly</li>
+   <li>Orderly</li>
+   <li>Faker</li>
 
    ### API Gems
 <li>Faraday</li>
