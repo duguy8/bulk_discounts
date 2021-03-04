@@ -31,3 +31,6 @@ coverage
 
 # Ignore active_designer
 active_designer
+
+# Ignore Token YML
+/config/local_env.yml 
