@@ -1,6 +1,5 @@
-require "json"
-require "faraday"
-require "pry"
+# require "json"
+# require "faraday"
 
 class GitService
   def self.repo_name
