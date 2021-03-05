@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     #merchants/dashboard
     resources :dashboard, only: [:index], controller: "merchants/dashboard"
     #merchants/discounts
-    resources :discounts, only: [:index, :show, :new, :create, :destroy], controller: "merchants/discounts"
+    resources :discounts, controller: "merchants/discounts"
     #merchants/items
     resources :items, only: [:index, :show, :new, :create, :edit, :update], controller: "merchants/items"
     #merchants/invoices

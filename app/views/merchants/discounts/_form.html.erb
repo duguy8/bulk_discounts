@@ -1,0 +1,12 @@
+<%= form_with model: [:merchant, discount], local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, value: @discount.name ||= "Enter Name" %><br>
+
+  <%= f.label :quantity_threshold %>
+  <%= f.number_field :quantity_threshold, min: 0, value: @discount.quantity_threshold ||= "Enter Description" %><br>
+
+  <%= f.label :percentage_discount %>
+  <%= f.number_field :percentage_discount, min: 0, value: @discount.percentage_discount ||= "Enter Selling Price" %>
+
+  <%= f.submit button %>
+<% end %>

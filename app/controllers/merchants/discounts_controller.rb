@@ -1,6 +1,6 @@
 class Merchants::DiscountsController < ApplicationController
-  before_action :set_merchant, only: [:index, :create, :destroy]
-  before_action :set_discount, only: [:show, :destroy]
+  before_action :set_merchant, only: [:index, :show, :create, :destroy]
+  before_action :set_discount, only: [:show, :edit, :update, :destroy]
 
   def index
     @holidays = NagerService.upcoming_holidays
@@ -21,6 +21,19 @@ class Merchants::DiscountsController < ApplicationController
     else
       flash[:notice] = "#{@discount.errors.full_messages.pop}"
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @discount.update(discount_params)
+      flash[:notice] = "#{@discount.name} Updated Succesfully"
+      redirect_to merchant_discount_path(@discount.merchant, @discount)
+    else
+      flash[:notice] = "#{@discount.errors.full_messages.pop}"
+      render :edit
     end
   end
 
