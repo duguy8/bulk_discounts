@@ -12,7 +12,7 @@
 
 ## Core Database Relationships
 
-<img width="1006" alt="m2-esty-shop-schema" src="https://user-images.githubusercontent.com/64031242/109900028-f2a59600-7c53-11eb-87bb-b581ed18979f.png">
+<img width="1006" alt="m2-esty-shop-schema" src="/active_designer/index.html">
 
 
 ## CSV Tasks
@@ -24,10 +24,10 @@ This application uses custom rake tasks to import CSV data to database tables:
 </ul>
 ## ActiveDesigner
 
-- To create a visual of the database: 
+- To create a visual of the database:
 `active_designer --create ./db/schema.rb`
 
-- To view it in a webpage: 
+- To view it in a webpage:
 `open active_designer/index.html`
 
 ## Gem Information
