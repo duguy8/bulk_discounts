@@ -12,7 +12,7 @@
 
 ## Core Database Relationships
 
-<img width="1006" alt="m2-esty-shop-schema" src="/active_designer/index.html">
+<img width="1006" alt="m2-esty-shop-schema" src="/public/schema.png">
 
 
 ## CSV Tasks
