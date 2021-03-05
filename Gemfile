@@ -27,9 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#api gems
+#API consumption
 gem 'faraday'
-# gem 'vcr'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -41,17 +40,21 @@ gem 'faraday'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
+  gem 'simplecov'
+  gem 'active_designer'
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
+group :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'orderly'
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers', '~> 4.0'
-  gem 'simplecov'
-  gem 'active_designer'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
