@@ -1,2 +1,3 @@
 <h1><%= @merchant.name %> Discounts</h1>
 <%= render partial: "discounts", locals: { merchant: @merchant } %>
+<%= render partial: "upcoming_holidays", locals: { holidays: @holidays } %>

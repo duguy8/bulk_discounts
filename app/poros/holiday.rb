@@ -1,8 +1,6 @@
 class Holiday
   attr_reader :date,
-              :local_name,
-              :name,
-              :country_code
+              :name
 
   def initialize(data)
     @date = data[:date]
