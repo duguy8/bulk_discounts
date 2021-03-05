@@ -19,17 +19,31 @@ RSpec.describe "As a merchant on my discounts index" do
 
       expect(current_path).to eq(new_merchant_discount_path(@merchant))
     end
-    it "takes me back to index after filling out where I see new discount"
-    it "renders new form if I dont enter valid data"
+
+    it "takes me back to index after filling out where I see new discount" do
+      visit new_merchant_discount_path(@merchant)
+
+      fill_in :discount_name, with: "Great Discount!"
+      fill_in :discount_quantity_threshold, with: 12
+      fill_in :discount_percentage_discount, with: 20
+      click_button "Create Discount"
+
+      expect(current_path).to eq(merchant_discounts_path(@merchant))
+      expect(page).to have_content("Great Discount! Created Succesfully")
+      expect(page).to have_content("Great Discount!")
+      expect(page).to have_content("Quantity Threshold: 12")
+      expect(page).to have_content("Percentage Discount: 20")
+    end
+
+    it "renders new form if I dont enter valid data" do
+      visit new_merchant_discount_path(@merchant)
+
+      fill_in :discount_name, with: ""
+      fill_in :discount_quantity_threshold, with: 12
+      fill_in :discount_percentage_discount, with: 20
+      click_button "Create Discount"
+
+      expect(page).to have_content("Name can't be blank")
+    end
   end
 end
-
-
-# As a merchant
-# When I visit my bulk discounts index
-# Then I see a link to create a new discount
-# When I click this link
-# Then I am taken to a new page where I see a form to add a new bulk discount
-# When I fill in the form with valid data
-# Then I am redirected back to the bulk discount index
-# And I see my new bulk discount listed
