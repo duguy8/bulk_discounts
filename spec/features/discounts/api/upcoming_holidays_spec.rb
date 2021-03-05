@@ -12,7 +12,6 @@ RSpec.describe "When I visit the discounts index page" do
   describe "I see a section ~Upcoming Holidays~ with next 3 upcoming US holidays listed" do
     it "Is from the Next public holidays endpoint in Nager.Date API" do
       visit merchant_discounts_path(@merchant)
-      save_and_open_page
 
       within(".upcoming_holidays") do
         expect(page).to have_content("#{NagerService.upcoming_holidays[0].name} on: #{NagerService.upcoming_holidays[0].date}")
