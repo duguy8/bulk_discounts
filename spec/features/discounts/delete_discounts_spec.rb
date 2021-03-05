@@ -18,8 +18,6 @@ RSpec.describe "As a merchant on my discounts index" do
         click_link "Delete Discount"
       end
 
-      save_and_open_page
-
       expect(current_path).to eq(merchant_discounts_path(@merchant))
       expect(page).to have_content("#{@discount1.name} Deleted Succesfully")
 
