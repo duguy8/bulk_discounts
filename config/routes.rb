@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  #home
   root to: 'welcome#index'
 
   #admins
@@ -13,12 +14,12 @@ Rails.application.routes.draw do
     resources :merchants, only: [:index, :new, :create, :show, :edit, :update]
   end
 
-  #smerchants
+  #merchants
   resources :merchants, only: [:show] do
     #merchants/dashboard
     resources :dashboard, only: [:index], controller: "merchants/dashboard"
     #merchants/discounts
-    resources :discounts, only: [:index, :show], controller: "merchants/discounts"
+    resources :discounts, only: [:index, :show, :new, :create], controller: "merchants/discounts"
     #merchants/items
     resources :items, only: [:index, :show, :new, :create, :edit, :update], controller: "merchants/items"
     #merchants/invoices

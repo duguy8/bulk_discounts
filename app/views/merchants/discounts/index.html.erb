@@ -1,3 +1,4 @@
 <h1><%= @merchant.name %> Discounts</h1>
+<%= link_to "Create a new Discount", new_merchant_discount_path(@merchant) %>
 <%= render partial: "discounts", locals: { merchant: @merchant } %>
 <%= render partial: "upcoming_holidays", locals: { holidays: @holidays } %>
