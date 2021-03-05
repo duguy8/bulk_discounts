@@ -1,0 +1,9 @@
+<section class="upcoming_holidays">
+  <h3>Upcoming US Holidays: </h3>
+    <ol>
+      <% holidays.each do |holiday| %>
+        <li><%= holiday.name %>
+        on: <%= holiday.date %></li>
+      <% end %>
+    </ol>
+</section>
