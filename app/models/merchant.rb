@@ -10,22 +10,25 @@ class Merchant < ApplicationRecord
   scope :disabled, -> { where(status: false) }
 
   def total_revenue
-    total = invoice_items.sum("invoice_items.quantity * invoice_items.unit_price").to_i
-    if !discounts.empty?
-      check_for_discounts(total)
+    any_discounts = invoice_items
+    .joins(:discounts)
+    .where('invoice_items.quantity >= discounts.quantity_threshold')
+    if !any_discounts.empty?
+      total = invoice_items.sum("invoice_items.quantity * invoice_items.unit_price").to_i
+      apply_discounts(total)
     else
-      total
+      invoice_items.sum("invoice_items.quantity * invoice_items.unit_price").to_i
     end
   end
 
-  def check_for_discounts(total)
+  def apply_discounts(total)
     discount = invoice_items.joins(:discounts)
     .where('invoice_items.quantity >= discounts.quantity_threshold')
-    .select('sum(invoice_items.quantity * invoice_items.unit_price)/100 *discounts.percentage_discount AS discount_total')
+    .select('sum(invoice_items.quantity * invoice_items.unit_price)/100 *discounts.percentage_discount AS discount_total, sum(invoice_items.quantity * invoice_items.unit_price) AS total')
     .group('discounts.percentage_discount')
     .distinct
-    .order('discount_total')
-    .last.discount_total.to_i
+    .order('discount_total DESC').first
+    .discount_total.to_i
     total - discount
   end
 
