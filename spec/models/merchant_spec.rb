@@ -164,4 +164,23 @@ RSpec.describe Merchant, type: :model do
       expect(@merchant2.top_selling_date).to eq("Tuesday, March 01, 2011")
     end
   end
+
+  describe "Discounts class method" do
+    it "#apply_discounts example 3" do
+      merchant = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant.id, quantity_threshold: 15, percentage_discount: 30)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant.id)
+      item2 = create(:item, merchant_id: merchant.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(merchant.total_revenue).to eq(2010)
+    end
+  end
 end
