@@ -34,6 +34,7 @@ RSpec.describe "When I visit '/admin'" do
   end
 
   it "Shows top 5 customers by successful transactions" do
+    VCR.use_cassette("github_information_four") do
 
     visit admin_index_path
 
@@ -53,6 +54,7 @@ RSpec.describe "When I visit '/admin'" do
 
     within("#customer-#{@customer5.id}") do
       expect(page).to have_content("Successful Transactions: 10")
+    end
     end
   end
 end

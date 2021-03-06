@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'webmock/rspec'
 SimpleCov.start do
    add_filter "/rails_helper"
    add_filter "/factories"

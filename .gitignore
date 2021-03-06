@@ -33,4 +33,7 @@ coverage
 active_designer
 
 # Ignore Token YML
-/config/local_env.yml 
+/config/local_env.yml
+
+# API info
+fixtures

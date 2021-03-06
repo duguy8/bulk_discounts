@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Merchant, type: :model do
   describe "relationships" do
     it { should have_many :items }
+    it { should have_many :discounts }
     it { should have_many(:invoice_items).through(:items)}
     it { should have_many(:invoices).through(:invoice_items)}
     it { should have_many(:transactions).through(:invoices)}
@@ -161,6 +162,62 @@ RSpec.describe Merchant, type: :model do
     it 'returns a merchant top day by revenue' do
       expect(@merchant1.top_selling_date).to eq("Monday, March 25, 2013")
       expect(@merchant2.top_selling_date).to eq("Tuesday, March 01, 2011")
+    end
+  end
+
+  describe "Discounts class method" do
+    it "#apply_discounts example 3" do
+      merchant = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant.id, quantity_threshold: 15, percentage_discount: 30)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant.id)
+      item2 = create(:item, merchant_id: merchant.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(merchant.total_revenue).to eq(2010)
+    end
+
+    it "#apply_discounts example 4" do
+      merchant = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant.id, quantity_threshold: 15, percentage_discount: 10)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant.id)
+      item2 = create(:item, merchant_id: merchant.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(merchant.total_revenue).to eq(2160)
+    end
+
+    it "#apply_discounts example 5" do
+      merchant1 = create(:merchant)
+      merchant2 = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant1.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant1.id, quantity_threshold: 15, percentage_discount: 30)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant1.id)
+      item2 = create(:item, merchant_id: merchant1.id)
+      item3 = create(:item, merchant_id: merchant2.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+      invoice_item3 = create(:invoice_item, item_id: item3.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(merchant1.total_revenue).to eq(2010)
     end
   end
 end

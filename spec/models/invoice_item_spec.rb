@@ -7,6 +7,7 @@ RSpec.describe InvoiceItem, type: :model do
     it { should have_many(:merchants).through(:item) }
     it { should have_many(:customers).through(:invoice) }
     it { should have_many(:transactions).through(:invoice) }
+    it { should have_many(:discounts).through(:item) }
   end
 
   describe "validations" do
@@ -42,7 +43,7 @@ RSpec.describe InvoiceItem, type: :model do
     end
 
     it "#total_revenue" do
-      expect(@merchant1.invoice_items.total_revenue).to eq(2100)
+      expect(@merchant1.total_revenue).to eq(2100)
     end
   end
 end
