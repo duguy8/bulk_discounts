@@ -24,7 +24,7 @@ RSpec.describe "When I visit my merchant_invoice_show_page" do
     @invoice_item4 = create(:invoice_item, item_id: @item4.id, invoice_id: @invoice2.id, quantity: 5, unit_price: 100)
   end
 
-  describe "I see that the total revenue for my merchant" do
+  describe "I see that the total revenue for that invoice" do
     it "Includes discounts in the calculation" do
       visit merchant_invoice_path(@merchant, @invoice)
 
