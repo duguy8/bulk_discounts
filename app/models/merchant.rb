@@ -12,8 +12,7 @@ class Merchant < ApplicationRecord
   def total_revenue
     any_discounts = invoice_items
     .joins(:discounts)
-    .where('invoice_items.quantity >= discounts.quantity_threshold')
-    .distinct
+    .where('invoice_items.quantity >= discounts.quantity_threshold').distinct
     if !any_discounts.empty?
       total = invoice_items.sum("invoice_items.quantity * invoice_items.unit_price").to_i
       apply_discounts(total, any_discounts)
@@ -24,13 +23,13 @@ class Merchant < ApplicationRecord
 
   def apply_discounts(total, any_discounts)
     discounts = any_discounts
-    .select('invoice_items.*,
+      .select('invoice_items.*,
       sum(invoice_items.quantity *
-        invoice_items.unit_price)/100 *
-        discounts.percentage_discount AS discount_total')
-        .group('invoice_items.id, discounts.percentage_discount')
-        .order('discount_total DESC')
-        .uniq
+      invoice_items.unit_price)/100 *
+      discounts.percentage_discount AS discount_total')
+      .group('invoice_items.id, discounts.percentage_discount')
+      .order('discount_total DESC')
+      .uniq
     discount = discounts.sum(&:discount_total).to_i
     total - discount
   end

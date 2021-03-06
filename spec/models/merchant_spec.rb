@@ -182,5 +182,42 @@ RSpec.describe Merchant, type: :model do
 
       expect(merchant.total_revenue).to eq(2010)
     end
+
+    it "#apply_discounts example 4" do
+      merchant = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant.id, quantity_threshold: 15, percentage_discount: 10)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant.id)
+      item2 = create(:item, merchant_id: merchant.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(merchant.total_revenue).to eq(2160)
+    end
+
+    it "#apply_discounts example 5" do
+      merchant1 = create(:merchant)
+      merchant2 = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant1.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant1.id, quantity_threshold: 15, percentage_discount: 30)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant1.id)
+      item2 = create(:item, merchant_id: merchant1.id)
+      item3 = create(:item, merchant_id: merchant2.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+      invoice_item3 = create(:invoice_item, item_id: item3.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(merchant1.total_revenue).to eq(2010)
+    end
   end
 end
