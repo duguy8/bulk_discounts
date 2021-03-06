@@ -43,7 +43,7 @@ RSpec.describe InvoiceItem, type: :model do
     end
 
     it "#total_revenue" do
-      expect(@merchant1.invoice_items.total_revenue).to eq(2100)
+      expect(@merchant1.total_revenue).to eq(2100)
     end
   end
 end

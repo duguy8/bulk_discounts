@@ -11,8 +11,22 @@ class InvoiceItem < ApplicationRecord
 
   enum status: [ "pending", "packaged", "shipped" ]
 
-  def self.total_revenue
-    # require "pry"; binding.pry
-     sum("invoice_items.quantity * invoice_items.unit_price").to_i
-  end
+  # def self.total_revenue
+  #    total =
+  #    sum("invoice_items.quantity * invoice_items.unit_price").to_i
+  #    if !Discount.all.empty?
+  #      check_discounts(total)
+  #    end
+  # end
+  #
+  # def self.check_discounts(total)
+  #   # discount = joins(:discounts)
+  #   # .where('invoice_items.quantity >= discounts.quantity_threshold')
+  #   # .select('sum(invoice_items.quantity * invoice_items.unit_price)/100 *discounts.percentage_discount AS discount_total')
+  #   # .group('discounts.percentage_discount')
+  #   # .distinct
+  #   # .order('discount_total')
+  #   # .last.discount_total.to_i
+  #   # total - discount
+  # end
 end

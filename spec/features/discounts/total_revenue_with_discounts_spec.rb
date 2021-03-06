@@ -25,10 +25,3 @@ RSpec.describe "When I visit my merchant_invoice_show_page" do
     end
   end
 end
-
-
-
-# As a merchant
-# When I visit my merchant invoice show page
-# Then I see that the total revenue for my
-# merchant includes bulk discounts in the calculation

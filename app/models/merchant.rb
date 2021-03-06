@@ -9,6 +9,25 @@ class Merchant < ApplicationRecord
   scope :enabled, -> { where(status: true) }
   scope :disabled, -> { where(status: false) }
 
+  def total_revenue
+    total = invoice_items.sum("invoice_items.quantity * invoice_items.unit_price").to_i
+    if !discounts.empty?
+      check_for_discounts(total)
+    else
+      total
+    end
+  end
+
+  def check_for_discounts(total)
+    discount = invoice_items.joins(:discounts)
+    .where('invoice_items.quantity >= discounts.quantity_threshold')
+    .select('sum(invoice_items.quantity * invoice_items.unit_price)/100 *discounts.percentage_discount AS discount_total')
+    .group('discounts.percentage_discount')
+    .distinct
+    .order('discount_total')
+    .last.discount_total.to_i
+    total - discount
+  end
 
   def self.top_merchants
     left_joins(:transactions)
