@@ -22,7 +22,8 @@ RSpec.describe "When I visit '/admin' I see the admin dashboard" do
     @invoice_item4 = create(:invoice_item, invoice_id: @invoice4.id, item_id: @item4.id, status: 2, quantity: 3, unit_price: 100)
   end
 
-  it "displays all incomplete invoices as links" do
+  it "displays all incomplete invoices as links & oldest to newest" do
+    VCR.use_cassette("github_information_six") do
     visit admin_index_path
 
     within("#incomplete-invoices") do
@@ -31,15 +32,12 @@ RSpec.describe "When I visit '/admin' I see the admin dashboard" do
       expect(page).to have_link("#{@invoice3.id}")
       expect(page).not_to have_link("#{@invoice4.id}")
     end
-  end
-
-  it 'displays incomplete invoices oldest to newest' do
-    visit admin_index_path
 
     within("#incomplete-invoices") do
       expect("#{@invoice3.id}").to appear_before("#{@invoice2.id}")
       expect("#{@invoice2.id}").to appear_before("#{@invoice1.id}")
       expect("#{@invoice3.id}").to appear_before("#{@invoice1.id}")
+    end
     end
   end
 end

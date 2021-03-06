@@ -2,6 +2,11 @@ require "rails_helper"
 
 RSpec.describe "As a merchant on my dashboard" do
   before :each do
+    response = File.open('./fixtures/nader_holidays.json')
+
+    stub_request(:get, "https://date.nager.at/Api/v2/NextPublicHolidays/US").
+      to_return(status: 200, body: response)
+
     @merchant = create(:merchant)
 
     @discount1 = create(:discount, merchant_id: @merchant.id)
