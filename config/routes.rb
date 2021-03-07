@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   #merchants
-  resources :merchants, only: [:show] do
+  resources :merchants, only: [:index, :show] do
     #merchants/dashboard
     resources :dashboard, only: [:index], controller: "merchants/dashboard"
     #merchants/discounts

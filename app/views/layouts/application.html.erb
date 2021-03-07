@@ -10,10 +10,19 @@
   </head>
 
   <body>
+
+    <nav>
+        <ul>
+        <li><%= link_to "Home", root_path, class: "link" %></li>
+        <li><%= link_to "Admin Home", admin_index_path, class: "link" %></li>
+        <li><%= link_to "Merchants Home", merchants_path, class: "link" %></li>
+        </ul>
+    </nav><br>
+
     <% flash.each do |type, message| %>
       <p><%= message %></p>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>
