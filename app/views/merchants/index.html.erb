@@ -1,5 +1,5 @@
-<h3>All Merchants</h3>
-
+<h1>Merchant Index</h1>
+<h3>Merchant List: </h3>
 <ol>
   <% @merchants.each do |merchant| %>
     <p><%= link_to "#{merchant.name}", merchant_dashboard_index_path(merchant.id) %></p>

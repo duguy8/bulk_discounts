@@ -1,3 +1,4 @@
+<h3>All Invoices: </h3>
 <ul>
   <% invoices.each do |invoice| %>
     <li><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></li>
