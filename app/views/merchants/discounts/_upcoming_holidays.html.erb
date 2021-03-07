@@ -1,9 +1,11 @@
 <section class="upcoming_holidays">
+  <center>
   <h3>Upcoming US Holidays: </h3>
-    <ol>
+    <ul>
       <% holidays.each do |holiday| %>
         <p><%= holiday.name %>
         on: <%= holiday.date %></p>
       <% end %>
-    </ol>
+    </ul>
+    </center>
 </section>
