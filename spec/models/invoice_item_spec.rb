@@ -102,4 +102,24 @@ RSpec.describe InvoiceItem, type: :model do
       expect(merchant1.invoice_items.total_revenue).to eq(2010)
     end
   end
+
+  describe "Instance Methods" do
+    it "#discount_applied" do
+      merchant1 = create(:merchant)
+
+      discount1 = create(:discount, merchant_id: merchant1.id, quantity_threshold: 10, percentage_discount: 20)
+      discount2 = create(:discount, merchant_id: merchant1.id, quantity_threshold: 15, percentage_discount: 30)
+
+      invoice = create(:invoice)
+
+      item1 = create(:item, merchant_id: merchant1.id)
+      item2 = create(:item, merchant_id: merchant1.id)
+
+      invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
+      invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
+
+      expect(invoice_item1.discount_applied).to eq(discount1)
+      expect(invoice_item2.discount_applied).to eq(discount2)
+    end
+  end
 end

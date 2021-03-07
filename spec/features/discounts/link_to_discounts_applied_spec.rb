@@ -27,19 +27,19 @@ RSpec.describe "When I visit my merchant_invoice_show_page" do
       visit merchant_invoice_path(@merchant, @invoice)
 
       within("#invoice_item-#{@invoice_item1.id}") do
-        expect(page).to have_content("Discounts Applied: #{@discount2.name}")
-        expect(page).to have_link("#{@discount2.name}")
-        click_link("#{@discount2.name}")
+        expect(page).to have_content("Discount Applied: #{@discount1.name}")
+        expect(page).to have_link("#{@discount1.name}")
+        click_link("#{@discount1.name}")
       end
 
-      expect(current_path).to eq(merchant_discount_path(@merchant, @discount2))
+      expect(current_path).to eq(merchant_discount_path(@merchant, @discount1))
     end
 
-    it "Does not show link if no discounts were applied" do
+    xit "Does not show link if no discounts were applied" do
       visit merchant_invoice_path(@merchant, @invoice)
 
       within("#invoice_item-#{@invoice_item3.id}") do
-        expect(page).not_to have_content("Discounts Applied: #{@discount2.name}")
+        expect(page).not_to have_content("Discount Applied: #{@discount2.name}")
         expect(page).not_to have_link("#{@discount2.name}")
       end
     end

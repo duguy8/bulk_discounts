@@ -11,6 +11,14 @@ class InvoiceItem < ApplicationRecord
 
   enum status: [ "pending", "packaged", "shipped" ]
 
+  def discount_applied
+    expected = discounts.where('quantity_threshold = ? OR quantity_threshold <= ?',
+      quantity, quantity)
+      .order(percentage_discount: :desc)
+      .limit(1)
+      .first
+  end
+
   def self.total_revenue
     any_discounts = joins(:discounts)
     .where('invoice_items.quantity >= discounts.quantity_threshold').distinct
