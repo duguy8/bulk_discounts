@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "When I visit my merchant_invoice_show_page" do
+RSpec.describe "When I visit an admin/invoice show page" do
   before :each do
     @merchant = create(:merchant)
     @merchant2 = create(:merchant)
@@ -26,15 +26,15 @@ RSpec.describe "When I visit my merchant_invoice_show_page" do
 
   describe "I see that the total revenue for that invoice" do
     it "Includes discounts in the calculation" do
-      visit merchant_invoice_path(@merchant, @invoice)
+      visit admin_invoice_path(@invoice)
 
-      expect(page).to have_content("Total Revenue: $2100")
+      expect(page).to have_content("Total Invoice Revenue: $2100")
     end
 
     it "Should not apply discount if quantity threshold is not met" do
-      visit merchant_invoice_path(@merchant2, @invoice2)
+      visit admin_invoice_path(@invoice2)
 
-      expect(page).to have_content("Total Revenue: $1000")
+      expect(page).to have_content("Total Invoice Revenue: $1000")
     end
   end
 end

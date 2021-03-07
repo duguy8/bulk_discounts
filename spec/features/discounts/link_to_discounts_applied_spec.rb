@@ -16,25 +16,32 @@ RSpec.describe "When I visit my merchant_invoice_show_page" do
     @item2 = create(:item, merchant_id: @merchant.id)
 
     @item3 = create(:item, merchant_id: @merchant2.id)
-    @item4 = create(:item, merchant_id: @merchant2.id)
 
     @invoice_item1 = create(:invoice_item, item_id: @item1.id, invoice_id: @invoice.id, quantity: 20, unit_price: 100)
     @invoice_item2 = create(:invoice_item, item_id: @item2.id, invoice_id: @invoice.id, quantity: 5, unit_price: 100)
     @invoice_item3 = create(:invoice_item, item_id: @item3.id, invoice_id: @invoice2.id, quantity: 5, unit_price: 100)
-    @invoice_item4 = create(:invoice_item, item_id: @item4.id, invoice_id: @invoice2.id, quantity: 5, unit_price: 100)
   end
 
-  describe "I see that the total revenue for that invoice" do
-    it "Includes discounts in the calculation" do
+  describe "Next to each invoice item I see a link" do
+    it "To the show page of any discounts applied ~if any~" do
       visit merchant_invoice_path(@merchant, @invoice)
 
-      expect(page).to have_content("Total Revenue: $2100")
+      within("#invoice_item-#{@invoice_item1.id}") do
+        expect(page).to have_content("Discount Applied: #{@discount1.name}")
+        expect(page).to have_link("#{@discount1.name}")
+        click_link("#{@discount1.name}")
+      end
+
+      expect(current_path).to eq(merchant_discount_path(@merchant, @discount1))
     end
 
-    it "Should not apply discount if quantity threshold is not met" do
-      visit merchant_invoice_path(@merchant2, @invoice2)
+    it "Does not show link if no discounts were applied" do
+      visit merchant_invoice_path(@merchant2, @invoice)
 
-      expect(page).to have_content("Total Revenue: $1000")
+      within("#invoice_item-#{@invoice_item3.id}") do
+        expect(page).not_to have_content("Discount Applied: #{@discount2.name}")
+        expect(page).not_to have_link("#{@discount2.name}")
+      end
     end
   end
 end
