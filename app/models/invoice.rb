@@ -17,6 +17,23 @@ class Invoice < ApplicationRecord
     .distinct
   end
 
+  def total_revenue_for_merchant(merchant)
+    any_discounts = invoice_items.joins(:item, :discounts)
+      .where('invoice_items.quantity >= discounts.quantity_threshold
+        AND items.merchant_id = ?', merchant).distinct
+    if !any_discounts.empty?
+      total = invoice_items.joins(:item)
+      .where('items.merchant_id = ?', merchant)
+      .sum("invoice_items.quantity
+      * invoice_items.unit_price").to_i
+      apply_discounts(total, any_discounts)
+    else
+      invoice_items.joins(:item)
+      .where('items.merchant_id = ?', merchant)
+      .sum("invoice_items.quantity * invoice_items.unit_price").to_i
+    end
+  end
+
   def total_revenue
     any_discounts = invoice_items.joins(:discounts)
       .where('invoice_items.quantity >= discounts.quantity_threshold').distinct

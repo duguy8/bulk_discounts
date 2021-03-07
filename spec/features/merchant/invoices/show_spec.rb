@@ -62,7 +62,7 @@ RSpec.describe 'the merchant invoice index page' do
   it "shows total revenue for all items on the invoice" do
     visit merchant_invoice_path(@merchant1.id, @invoice1.id)
 
-    expect(page).to have_content("Total Revenue: $2200")
+    expect(page).to have_content("Total Revenue: $2100")
   end
 
   it 'shows update item status select field and update button' do
