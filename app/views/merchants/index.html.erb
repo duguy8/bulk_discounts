@@ -1,22 +1,21 @@
 <div class="container">
 <h1>Merchant Index</h1>
-<h3>Merchant List: </h3>
+<h3>Merchant List:</h3>
 
   <center>
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-   <table class="table table-condensed">
+      <table class="table table-hover">
      <thead>
        <tr>
          <th>Merchant Name</th>
        </tr>
-     </thead>
-     <tbody>
-  <% @merchants.each do |merchant| %>
-    <tr><td><%= link_to "#{merchant.name}", merchant_dashboard_index_path(merchant.id) %></td></tr>>
-  <% end %>
-  <div class="cl"></div>
-</tbody>
-
-</table>
-</div>
+      </thead>
+    <tbody>
+       <% @merchants.each do |merchant| %>
+       <tr><td><%= link_to "#{merchant.name}", merchant_dashboard_index_path(merchant.id) %></td></tr>
+       <% end %>
+      <div class="cl"></div>
+    </tbody>
+    </table>
+  </div>
 </div>
