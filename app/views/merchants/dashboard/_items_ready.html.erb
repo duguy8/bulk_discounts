@@ -1,11 +1,29 @@
-<h2>Items Ready to Ship</h2>
+<div class="container">
+<h3>Items Ready to Ship</h3>
 
+<center>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-hover">
+   <thead>
+     <tr>
+       <th>Item Name</th>
+       <th>Invoice Creation date</th>
+       <th>Link to Item</th>
+     </tr>
+    </thead>
+  <tbody>
 <section class="items-ready">
   <% merchant.items_not_shipped.each do |item| %>
     <div id="item-<%= item.id %>">
-      <h4><%= item.name %></h4>
-      <h4>Invoice Creation Date: <%= item.convert_date %></h4>
-      <%= link_to "#{item.invoice_id}", "/merchants/#{merchant.id}/invoices/#{item.invoice_id}" %>
+      <tr><td><%= item.name %></td>
+      <td><%= item.convert_date %></td>
+      <td><%= link_to "#{item.invoice_id}", "/merchants/#{merchant.id}/invoices/#{item.invoice_id}" %></td></tr>
     </div>
   <% end %>
+  <div class="cl"></div>
+</tbody>
+</table>
+</div>
+</div>
 </section>
+</div>

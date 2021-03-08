@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Invoice ID: <%= @invoice.id %></h1>
 
 <h3><%= render partial: 'dropdown', locals: { invoice: @invoice } %></h3>
@@ -7,3 +8,4 @@
 <h3>Customer: <%= @invoice.customer.first_name %> <%= @invoice.customer.last_name %></h3>
 
 <%= render partial: 'invoice_items', locals: { invoice: @invoice } %>
+</div>

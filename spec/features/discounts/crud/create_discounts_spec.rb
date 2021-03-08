@@ -6,7 +6,7 @@ RSpec.describe "As a merchant on my discounts index" do
 
     stub_request(:get, "https://date.nager.at/Api/v2/NextPublicHolidays/US").
       to_return(status: 200, body: response)
-      
+
     @merchant = create(:merchant)
 
     @discount1 = create(:discount, merchant_id: @merchant.id)
@@ -36,8 +36,8 @@ RSpec.describe "As a merchant on my discounts index" do
       expect(current_path).to eq(merchant_discounts_path(@merchant))
       expect(page).to have_content("Great Discount! Created Succesfully")
       expect(page).to have_content("Great Discount!")
-      expect(page).to have_content("Quantity Threshold: 12")
-      expect(page).to have_content("Percentage Discount: 20")
+      expect(page).to have_content("12")
+      expect(page).to have_content("20")
     end
 
     it "renders new form if I dont enter valid data" do

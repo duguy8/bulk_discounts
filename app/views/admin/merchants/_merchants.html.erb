@@ -2,15 +2,26 @@
 <h3>Enabled Merchants</h3>
 
 <center>
-<ul>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-hover">
+   <thead>
+     <tr>
+       <th>Customer Name</th>
+       <th>Disable Merchant</th>
+     </tr>
+    </thead>
+  <tbody>
   <% merchants.enabled.each do |merchant| %>
     <div id="merchant-<%= merchant.id %>">
-      <li><p><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %>
-        <%= button_to  "Disable Merchant", admin_merchant_path(merchant, {status: :disable}), method: :patch %>
-      </p></li>
+      <tr><td><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %></td>
+        <td><%= button_to  "Disable Merchant", admin_merchant_path(merchant, {status: :disable}), method: :patch %>
+      </td></tr>
     </div>
   <% end %>
-</ul>
+  <div class="cl"></div>
+  </tbody>
+  </table>
+  </div>
 </section>
 </center>
 
@@ -18,14 +29,25 @@
 <h3>Disabled Merchants</h3>
 
 <center>
-<ul>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-hover">
+   <thead>
+     <tr>
+       <th>Customer Name</th>
+       <th>Enable Merchant</th>
+     </tr>
+    </thead>
+  <tbody>
   <% merchants.disabled.each do |merchant| %>
     <div id="merchant-<%= merchant.id %>">
-      <li><p><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %>
-        <%= button_to  "Enable Merchant", admin_merchant_path(merchant, {status: :enable}), method: :patch %>
-      </p></li>
+      <tr><td><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %></td>
+        <td><%= button_to  "Enable Merchant", admin_merchant_path(merchant, {status: :enable}), method: :patch %>
+      </td></tr>
     </div>
   <% end %>
-</ul>
+  <div class="cl"></div>
+  </tbody>
+  </table>
+  </div>
 </section>
 </center>

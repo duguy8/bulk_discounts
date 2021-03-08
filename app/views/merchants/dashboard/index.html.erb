@@ -1,8 +1,10 @@
+<div class="container">
 <center>
-<h1><%= @merchant.name %></h1>
-<%= link_to "#{@merchant.name}'s Items Index", merchant_items_path(@merchant) %>
-<%= link_to "#{@merchant.name}'s Invoices Index", merchant_invoices_path(@merchant) %>
-<%= link_to "View All Discounts", merchant_discounts_path(@merchant) %>
+<h1>Merchant: <%= @merchant.name %></h1>
+<span class="border border-dark"><%= link_to "#{@merchant.name}'s Items Index", merchant_items_path(@merchant) %></span>
+<span class="border border-dark"><%= link_to "#{@merchant.name}'s Invoices Index", merchant_invoices_path(@merchant) %></span>
+<span class="border border-dark"><%= link_to "View All Discounts", merchant_discounts_path(@merchant) %></span>
 <%= render partial: 'customers', locals: { merchant: @merchant } %>
 <%= render partial: 'items_ready', locals: { merchant: @merchant } %>
 </center>
+</div>

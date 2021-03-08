@@ -45,8 +45,8 @@ RSpec.describe "When I visit the discounts index page" do
 
       within(".all_discounts") do
         expect(page).to have_content("Memorial Day Discount")
-        expect(page).to have_content("Quantity Threshold: 2")
-        expect(page).to have_content("Percentage Discount: 30")
+        expect(page).to have_content("2")
+        expect(page).to have_content("30")
       end
     end
 
@@ -64,8 +64,8 @@ RSpec.describe "When I visit the discounts index page" do
 
       within(".all_discounts") do
         expect(page).to have_content("New Discount")
-        expect(page).to have_content("Quantity Threshold: 10")
-        expect(page).to have_content("Percentage Discount: 20")
+        expect(page).to have_content("10")
+        expect(page).to have_content("20")
       end
     end
   end

@@ -1,8 +1,20 @@
+<center>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-hover">
+   <thead>
+     <tr>
+       <th>Invoice ID</th>
+     </tr>
+    </thead>
+  <tbody>
+
 <section id="incomplete-invoices">
-  <ul>
-    <h2>Incomplete Invoices: </h2>
+    <h3>Incomplete Invoices: </h3>
     <% Invoice.incomplete_invoices.each do |invoice| %>
-      <li><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></li>
+      <tr><td><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></td></tr>
     <% end %>
-  </ul>
-</section>
+    <div class="cl"></div>
+  </section>
+    </tbody>
+    </table>
+    </div>

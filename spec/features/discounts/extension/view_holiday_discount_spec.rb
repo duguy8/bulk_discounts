@@ -32,8 +32,6 @@ RSpec.describe "When I visit the discounts index page & have created a holiday d
         click_link("Memorial Day Discount")
       end
 
-      save_and_open_page
-
       expect(page).to have_content("Memorial Day")
       expect(page).to have_content("Quantity Threshold: 2")
       expect(page).to have_content("Percentage Discount: 30")
