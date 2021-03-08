@@ -1,6 +1,8 @@
+<div class="container">
 <%= render partial: "header" %>
-<h1>This is the Admin Dashboard</h1>
-<%=  link_to "Admin Merchants Index", admin_merchants_path %>
-<%=  link_to "Admin Invoices Index", admin_invoices_path %>
+<h1>Admin Dashboard</h1>
+<span class="border border-dark"><%=  link_to "Admin Merchants Index", admin_merchants_path %></span>
+<span class="border border-dark"><%=  link_to "Admin Invoices Index", admin_invoices_path %></span>
 <%= render partial: "top_customers" %>
 <%= render partial: "incomplete_invoices" %>
+</div>
