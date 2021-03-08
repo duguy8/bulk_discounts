@@ -7,6 +7,10 @@ class Holiday
     @name = data[:name]
   end
 
+  def is_a_discount
+    Discount.where("name like ?", "%#{name}%")
+  end
+
   def self.upcoming(input)
     input.map do |endpoint|
       Holiday.new(endpoint)

@@ -5,10 +5,16 @@
       <% holidays.each do |holiday| %>
           <p><%= holiday.name %>
           on: <%= holiday.date %>
-          <%= button_to "Create Discount",
-          new_merchant_holiday_discount_path(@merchant, holiday.name),
-          method: :get%>
+
+          <% if holiday.is_a_discount.empty? %>
+            <%= button_to "Create Discount",
+            new_merchant_holiday_discount_path(@merchant, holiday.name),
+            method: :get%>
+          <% else %>
+            <%= link_to "#{holiday.name} Discount",
+            merchant_discount_path(@merchant, holiday.is_a_discount)%>
           </p>
+          <% end %>
       <% end %>
     </ul>
     </center>
