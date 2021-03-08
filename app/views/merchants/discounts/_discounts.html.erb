@@ -1,14 +1,34 @@
+
+
+
+
 <section class="all_discounts">
   <center>
-  <ul>
-    <% merchant.discounts.each do |discount| %>
-      <div id="discount-<%= discount.id %>">
-        <li><p><%= link_to "#{discount.name}", merchant_discount_path(merchant, discount) %></p>
-          <p>Quantity Threshold: <%= discount.quantity_threshold %>,
-          Percentage Discount: <%= discount.percentage_discount %></p>
-          <%= link_to "Delete Discount", merchant_discount_path(merchant, discount), method: :delete %></li>
-        </div>
-      <% end %>
-    </ul>
-    </center>
-</section>
+
+    <div class="container">
+
+     <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Discount Name</th>
+           <th>Quantity Threshold</th>
+           <th>Percentage Discount</th>
+           <th>Delete Discount</th>
+         </tr>
+       </thead>
+       <tbody>
+         <% merchant.discounts.each do |discount| %>
+         <div id="discount-<%= discount.id %>">
+         <tr><td>
+           <%= link_to "#{discount.name}", merchant_discount_path(merchant, discount) %></td>
+           <td><%= discount.quantity_threshold %></td>
+           <td><%= discount.percentage_discount %></td>
+           <td><%= link_to "Delete Discount", merchant_discount_path(merchant, discount), method: :delete %></td>
+         </tr>
+         </div>
+         <% end %>
+         <div class="cl"></div>
+       </tbody>
+
+     </table>
+    </div>

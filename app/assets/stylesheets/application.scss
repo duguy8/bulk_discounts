@@ -15,9 +15,16 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
 
+ html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
  body {
    margin: 30px;
-   padding: 40px;
+   padding: 40pxa;
  }
 
  h1 {
@@ -36,9 +43,18 @@
             Arial,sans-serif;
  }
 
+ .my-custom-scrollbar {
+position: relative;
+height: 360px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+
 h3 {
+  border-radius: 10px 10px 10px 10px;
   background-color: #88d8c0;
-  width: 12%;
   margin-left: auto;
   margin-right: auto;
   padding-right: 20px;
