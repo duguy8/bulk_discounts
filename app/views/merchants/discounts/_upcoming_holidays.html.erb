@@ -3,8 +3,12 @@
   <h3>Upcoming US Holidays: </h3>
     <ul>
       <% holidays.each do |holiday| %>
-        <p><%= holiday.name %>
-        on: <%= holiday.date %></p>
+          <p><%= holiday.name %>
+          on: <%= holiday.date %>
+          <%= button_to "Create Discount",
+          new_merchant_holiday_discount_path(@merchant, holiday.name),
+          method: :get%>
+          </p>
       <% end %>
     </ul>
     </center>

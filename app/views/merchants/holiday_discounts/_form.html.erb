@@ -1,0 +1,12 @@
+<%= form_with model: [:merchant, discount], local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, value: "#{holiday} Discount" %><br>
+
+  <%= f.label :quantity_threshold %>
+  <%= f.number_field :quantity_threshold, min: 0, value: quant %><br>
+
+  <%= f.label :percentage_discount %>
+  <%= f.number_field :percentage_discount, min: 0, value: percent %>
+
+  <%= f.submit button %>
+<% end %>
