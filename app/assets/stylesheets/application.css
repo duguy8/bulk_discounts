@@ -15,8 +15,8 @@
  */
 
  body {
-   margin: 10px;
-   padding: 10px;
+   margin: 30px;
+   padding: 40px;
  }
 
  h1 {
@@ -25,7 +25,7 @@
    padding-left: 24px;
    color: #ffb07d;
    text-align: center;
-   font-size: 40px;
+   font-size: 48px;
             -webkit-text-stroke-width: .7px;
             -webkit-text-stroke-color: black;
             font-family: "Graphik Webfont",
@@ -37,17 +37,17 @@
 
 h3 {
   background-color: #88d8c0;
+  width: 12%;
+  margin-left: auto;
+  margin-right: auto;
   padding-right: 20px;
   padding-left: 20px;
   text-align: center;
-  font-size: 30px;
+  font-size: 28px;
            -webkit-text-stroke-width: .7px;
            -webkit-text-stroke-color: black;
-           font-family: "Graphik Webfont",
-           -apple-system,
-           BlinkMacSystemFont,
-           "Roboto","Droid Sans","Segoe UI","Helvetica",
-           Arial,sans-serif;
+           font-family: 'Helvetica Neue';
+           font-weight: lighter;
 }
 
 h4 {

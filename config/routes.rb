@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index], controller: "merchants/dashboard"
     #merchants/discounts
     resources :discounts, controller: "merchants/discounts"
+    #merchants/holiday_discounts
+    resources :holiday_discounts, only: [:new], controller: "merchants/holiday_discounts"
     #merchants/items
     resources :items, only: [:index, :show, :new, :create, :edit, :update], controller: "merchants/items"
     #merchants/invoices

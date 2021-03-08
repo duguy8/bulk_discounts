@@ -66,7 +66,7 @@ RSpec.describe Invoice, type: :model do
       @invoice_item7 = create(:invoice_item, invoice_id: @invoice1.id, item_id: @item7.id, status: 2, quantity: 1, unit_price: 100)
     end
     it "#total_revenue" do
-      expect(@invoice1.total_revenue).to eq(2200)
+      expect(@invoice1.total_revenue_for_invoice).to eq(2200)
     end
   end
 
@@ -85,7 +85,7 @@ RSpec.describe Invoice, type: :model do
       invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
       invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
 
-      expect(invoice.total_revenue).to eq(2010)
+      expect(invoice.total_revenue_for_merchant(merchant.id)).to eq(2010)
     end
 
     it "#apply_discounts example 4" do
@@ -102,7 +102,7 @@ RSpec.describe Invoice, type: :model do
       invoice_item1 = create(:invoice_item, item_id: item1.id, invoice_id: invoice.id, quantity: 12, unit_price: 100)
       invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
 
-      expect(invoice.total_revenue).to eq(2160)
+      expect(invoice.total_revenue_for_merchant(merchant.id)).to eq(2160)
     end
 
     it "#apply_discounts example 5" do
@@ -122,7 +122,7 @@ RSpec.describe Invoice, type: :model do
       invoice_item2 = create(:invoice_item, item_id: item2.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
       invoice_item3 = create(:invoice_item, item_id: item3.id, invoice_id: invoice.id, quantity: 15, unit_price: 100)
 
-      expect(invoice.total_revenue).to eq(3510)
+      expect(invoice.total_revenue_for_merchant(merchant1.id)).to eq(2010)
     end
   end
 
