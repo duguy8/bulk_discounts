@@ -8,7 +8,7 @@ class Holiday
   end
 
   def is_a_discount
-    Discount.where("name like ?", "%#{name}%")
+    Discount.where("name like ?", "%#{name}%").pluck(:id)
   end
 
   def self.upcoming(input)
