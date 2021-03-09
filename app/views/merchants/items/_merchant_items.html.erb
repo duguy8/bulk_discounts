@@ -5,6 +5,7 @@
       <div id="item-<%= item.id %>">
         <li><%= link_to "#{item.name}", merchant_item_path(merchant.id, item.id) %>
           <%= button_to  "Disable Item", merchant_item_path(merchant.id, item.id, {status: :disable}), method: :patch %>
+            <%= button_to "Add Item", cart_path(item, merchant_id: merchant.id), method: :patch %>
         </li>
       </div>
       <% end %>
@@ -18,6 +19,7 @@
       <div id="item-<%= item.id %>">
         <li><%= link_to "#{item.name}", merchant_item_path(merchant.id, item.id) %>
           <%= button_to "Enable Item", merchant_item_path(merchant.id, item.id, {status: :enable}), method: :patch %>
+          <%= button_to "Add Item", cart_path(item, merchant_id: merchant.id), method: :patch %>
         </li>
       </div>
     <% end %>

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :merchants, only: [:index, :new, :create, :show, :edit, :update]
   end
 
+  #cart
+  resources :cart, only: [:update], controller: "customers/cart"
+
   #merchants
   resources :merchants, only: [:index, :show] do
     #merchants/dashboard
