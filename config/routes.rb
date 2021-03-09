@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   #users
   resources :users, only: [:new, :create], controller: "customers/users"
+  #users/profile
+  get 'profile', action: :show, controller: "customers/users"
 
   #admins
   resources :admin, only: [:index], controller: "admin/dashboard"

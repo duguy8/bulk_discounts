@@ -54,8 +54,9 @@ This application uses custom rake tasks to import CSV data to database tables:
 <li>VCR</li>
 </ul
 
-  ### Styling Gems
+  ### Other Gems
 <li>Bootstrap</li>
+<li>Bcrypt</li>
 
 ## Learning Goals
 
