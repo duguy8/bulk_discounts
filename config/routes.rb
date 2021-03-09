@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   #cart
-  resources :cart, only: [:update], controller: "customers/cart"
+  resources :cart, only: [:update, :destroy], controller: "customers/cart"
 
   #merchants
   resources :merchants, only: [:index, :show] do

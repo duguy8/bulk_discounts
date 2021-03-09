@@ -11,6 +11,13 @@ class Customers::CartController < ApplicationController
     redirect_to merchant_items_path(params[:merchant_id])
   end
 
+  def destroy
+    contents = @cart.total
+    session[:cart] = nil
+    flash[:notice] = "#{contents} items purchased."
+    redirect_to root_path
+  end
+
   private
 
   def set_item

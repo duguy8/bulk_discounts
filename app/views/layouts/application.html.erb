@@ -53,7 +53,8 @@
 <% end %>
 
 <div class="footer">
-	<span class="text-muted">Items in Cart: <%= @cart.total %></span>
+	<span class="text-muted">Items in Cart: <%= @cart.total %>
+  <%= button_to "Check Out", cart_path(@cart), method: :delete %></span>
 </div>
 
     <%= yield %>
