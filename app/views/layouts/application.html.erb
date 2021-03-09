@@ -49,10 +49,13 @@
 </nav>
 
 <% flash.each do |type, message| %>
-<p><%= message %></p>
+  <p><%= message %></p>
 <% end %>
 
-  
+<div class="footer">
+	<span class="text-muted">Items in Cart: <%= @cart.total %></span>
+</div>
+
     <%= yield %>
   </body>
 </html>
