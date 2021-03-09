@@ -1,12 +1,6 @@
-
-
-
-
 <section class="all_discounts">
   <center>
-
     <div class="container">
-
      <table class="table table-hover">
        <thead>
          <tr>
@@ -17,21 +11,20 @@
          </tr>
        </thead>
        <tbody>
-         <% merchant.discounts.each do |discount| %>
-         <div id="discount-<%= discount.id %>">
-         <tr><td>
-            <%= link_to "#{discount.name}", merchant_discount_path(merchant, discount) %></td>
+        <% merchant.discounts.each do |discount| %>
+        <div id="discount-<%= discount.id %>">
+        <tr><td>
+          <%= link_to "#{discount.name}", merchant_discount_path(merchant, discount) %></td>
             <td><%= discount.quantity_threshold %></td>
             <td><%= discount.percentage_discount %></td>
-           <% if discount.pending_invoices.empty?%>
+          <% if discount.pending_invoices.empty?%>
             <td><%= link_to "Delete Discount", merchant_discount_path(merchant, discount), method: :delete %></td>
-           <% else %>
-           <% end %>
-         </tr>
-         </div>
-         <% end %>
-         <div class="cl"></div>
-       </tbody>
-
-     </table>
-    </div>
+          <% else %>
+          <% end %>
+          </tr>
+          </div>
+        <% end %>
+      <div class="cl"></div>
+    </tbody>
+  </table>
+</div>

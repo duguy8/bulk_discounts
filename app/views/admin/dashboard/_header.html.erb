@@ -1,8 +1,8 @@
 <section>
   <h5> <%= GitService.repo_name %> </h5>
-  Contributors:<% GitService.screen_contributors.each do |contributor| %>
-    <%= contributor[:login] %>
-    <%= contributor[:contributions] %>
-  <% end %>
+    Contributors:<% GitService.screen_contributors.each do |contributor| %>
+      <%= contributor[:login] %>
+      <%= contributor[:contributions] %>
+    <% end %>
   Pull Requests: <%= GitService.prs %>
 </section>

@@ -1,20 +1,19 @@
 <center>
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table table-hover">
-   <thead>
-     <tr>
-       <th>Invoice ID</th>
-     </tr>
-    </thead>
-  <tbody>
-
-<section id="incomplete-invoices">
-    <h3>Incomplete Invoices: </h3>
-    <% Invoice.incomplete_invoices.each do |invoice| %>
-      <tr><td><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></td></tr>
-    <% end %>
-    <div class="cl"></div>
-  </section>
-    </tbody>
-    </table>
+      <thead>
+        <tr>
+          <th>Invoice ID</th>
+        </tr>
+      </thead>
+        <tbody>
+          <section id="incomplete-invoices">
+            <h3>Incomplete Invoices: </h3>
+            <% Invoice.incomplete_invoices.each do |invoice| %>
+            <tr><td><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></td></tr>
+            <% end %>
+            <div class="cl"></div>
+          </section>
+        </tbody>
+      </table>
     </div>

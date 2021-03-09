@@ -6,6 +6,6 @@
 <h3>Name: <%= @invoice.customer.first_name.concat(" " + @invoice.customer.last_name) %></h3>
 <h3>Total Revenue: $<%=  @invoice.invoice_items.revenue %></h3>
 <h3>Total Revenue with Discounts: $<%=  @invoice.total_revenue_for_merchant(@merchant) %></h3>
-<%= render partial: "invoice_items", locals: {
-  invoice: @invoice, merchant: @merchant } %>
+  <%= render partial: "invoice_items", locals: {
+    invoice: @invoice, merchant: @merchant } %>
 </div>

@@ -4,7 +4,7 @@
 <span class="border border-dark"><%= link_to "#{@merchant.name}'s Items Index", merchant_items_path(@merchant) %></span>
 <span class="border border-dark"><%= link_to "#{@merchant.name}'s Invoices Index", merchant_invoices_path(@merchant) %></span>
 <span class="border border-dark"><%= link_to "View All Discounts", merchant_discounts_path(@merchant) %></span>
-<%= render partial: 'customers', locals: { merchant: @merchant } %>
-<%= render partial: 'items_ready', locals: { merchant: @merchant } %>
+  <%= render partial: 'customers', locals: { merchant: @merchant } %>
+  <%= render partial: 'items_ready', locals: { merchant: @merchant } %>
 </center>
 </div>

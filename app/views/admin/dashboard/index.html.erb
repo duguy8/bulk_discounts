@@ -1,8 +1,8 @@
 <div class="container">
-<%= render partial: "header" %>
+  <%= render partial: "header" %>
 <h1>Admin Dashboard</h1>
-<span class="border border-dark"><%=  link_to "Admin Merchants Index", admin_merchants_path %></span>
-<span class="border border-dark"><%=  link_to "Admin Invoices Index", admin_invoices_path %></span>
-<%= render partial: "top_customers" %>
-<%= render partial: "incomplete_invoices" %>
+    <span class="border border-dark"><%=  link_to "Admin Merchants Index", admin_merchants_path %></span>
+    <span class="border border-dark"><%=  link_to "Admin Invoices Index", admin_invoices_path %></span>
+  <%= render partial: "top_customers" %>
+  <%= render partial: "incomplete_invoices" %>
 </div>
