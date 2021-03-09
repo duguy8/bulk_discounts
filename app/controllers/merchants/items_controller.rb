@@ -3,7 +3,7 @@ class Merchants::ItemsController < ApplicationController
   before_action :set_merchant, only: [:index, :new, :create]
 
   def index
-    @cart = Cart.new(session[:cart])
+    # @cart = Cart.new(session[:cart])
   end
 
   def new

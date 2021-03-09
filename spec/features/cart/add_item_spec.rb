@@ -47,14 +47,13 @@ end
       within("#item-#{@item2.id}") do
         click_button "Add Item"
       end
-      
+
       expect(page).to have_content("Items in Cart: 2")
 
       within("#item-#{@item1.id}") do
         click_button "Add Item"
       end
 
-      expect(page).to have_content("You now have 2 #{@item1.name} in your cart.")
       expect(page).to have_content("Items in Cart: 3")
     end
   end
