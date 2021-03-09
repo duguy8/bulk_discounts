@@ -8,6 +8,6 @@ class Discount < ApplicationRecord
   has_many :invoices, through: :invoice_items
 
   def pending_invoices
-    invoice_items.where(status: 0)
+    invoices.where(status: 0)
   end
 end
