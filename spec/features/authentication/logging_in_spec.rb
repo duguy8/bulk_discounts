@@ -17,8 +17,8 @@ RSpec.describe "Logging In" do
 
     expect(current_path).to eq('/')
 
-    expect(page).to have_content("Welcome back, #{user.username}")
-    expect(page).to have_link("Sign Out")
+    expect(page).to have_content("Welcome, #{user.username}")
+    expect(page).to have_button("Sign Out")
     expect(page).to_not have_link("Register as a User")
     expect(page).to_not have_link("Sign In")
   end
