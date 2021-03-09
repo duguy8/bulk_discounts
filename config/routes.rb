@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #users/signin
   get '/signin', action: :new, controller: "customers/sessions"
   post '/signin', action: :create, controller: "customers/sessions"
+  delete '/signin', action: :destroy, controller: "customers/sessions"
 
   #admins
   resources :admin, only: [:index], controller: "admin/dashboard"

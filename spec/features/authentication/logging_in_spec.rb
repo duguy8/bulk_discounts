@@ -22,4 +22,21 @@ RSpec.describe "Logging In" do
     expect(page).to_not have_link("Register as a User")
     expect(page).to_not have_link("Sign In")
   end
+
+  it "cannot log in with bad credentials" do
+  user = User.create(username: "funbucket13", password: "test")
+
+  visit "/"
+
+  click_on "Sign In"
+
+  fill_in :username, with: user.username
+  fill_in :password, with: "incorrect password"
+
+  click_on "Sign In"
+
+  expect(current_path).to eq('/signin')
+
+  expect(page).to have_content("Sorry, your credentials are bad.")
+end
 end

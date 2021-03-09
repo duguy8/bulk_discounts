@@ -7,7 +7,7 @@ width="460" height="300" align="middle" style="border: 10px solid #555;" ></cent
 <br>
 <center>
 <% if @current_user %>
-  <%= button_to "Sign Out" %>
+  <%= button_to "Sign Out", signin_path, method: :delete %>
 <% else %>
   <%= button_to "Sign In", signin_path, method: :get %>
   <br>
