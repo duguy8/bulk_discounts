@@ -28,13 +28,13 @@ RSpec.describe "When I visit an admin/invoice show page" do
     it "Includes discounts in the calculation" do
       visit admin_invoice_path(@invoice)
 
-      expect(page).to have_content("Total Invoice Revenue: $2100")
+      expect(page).to have_content("Total Invoice Revenue with Discounts: $2100")
     end
 
     it "Should not apply discount if quantity threshold is not met" do
       visit admin_invoice_path(@invoice2)
 
-      expect(page).to have_content("Total Invoice Revenue: $1000")
+      expect(page).to have_content("Total Invoice Revenue with Discounts: $1000")
     end
   end
 end
