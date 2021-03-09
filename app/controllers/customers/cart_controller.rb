@@ -3,7 +3,6 @@ class Customers::CartController < ApplicationController
   before_action :set_item, only: [:update]
 
   def update
-    # @cart = Cart.new(session[:cart])
     @cart.add_item(@item.id)
     session[:cart] = @cart.contents
     quantity = @cart.count_of(@item.id)
