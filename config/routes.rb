@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   #home
   root to: 'welcome#index'
 
+  #users
+  resources :users, only: [:new, :create], controller: "customers/users"
+
   #admins
   resources :admin, only: [:index], controller: "admin/dashboard"
 
