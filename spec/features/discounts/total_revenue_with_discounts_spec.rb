@@ -28,13 +28,13 @@ RSpec.describe "When I visit my merchant_invoice_show_page" do
     it "Includes discounts in the calculation" do
       visit merchant_invoice_path(@merchant, @invoice)
 
-      expect(page).to have_content("Total Revenue: $2100")
+      expect(page).to have_content("Total Revenue with Discounts: $2100")
     end
 
     it "Should not apply discount if quantity threshold is not met" do
       visit merchant_invoice_path(@merchant2, @invoice2)
 
-      expect(page).to have_content("Total Revenue: $1000")
+      expect(page).to have_content("Total Revenue with Discounts: $1000")
     end
   end
 end
