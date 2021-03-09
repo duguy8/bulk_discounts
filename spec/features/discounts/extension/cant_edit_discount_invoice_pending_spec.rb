@@ -34,14 +34,16 @@ RSpec.describe "When an invoice is pending" do
       visit merchant_discount_path(@merchant, @discount1)
 
       expect(page).to have_link("Edit this Discount")
+
+      visit merchant_discounts_path(@merchant2)
+
+      within(".all_discounts") do
+        expect(page).not_to have_link("Delete Discount")
+      end
+
+      visit merchant_discount_path(@merchant2, @discount2)
+
+      expect(page).not_to have_link("Edit this Discount")
     end
   end
 end
-
-
-
-# When an invoice is pending,
-# a merchant should not be able to
-# delete or edit a bulk discount
-# that applies to any of their items
-# on that invoice.
