@@ -57,4 +57,21 @@ end
       expect(page).to have_content("Items in Cart: 3")
     end
   end
+
+  describe "After clicking ~Check Out" do
+    it "Should have no items in cart" do
+      visit merchant_items_path(@merchant)
+
+
+      within("#item-#{@item1.id}") do
+        click_button "Add Item"
+      end
+
+      expect(page).to have_content("Items in Cart: 1")
+
+      click_button "Check Out"
+
+      expect(page).to have_content("Items in Cart: 0")
+    end
+  end
 end
