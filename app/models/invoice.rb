@@ -33,7 +33,7 @@ class Invoice < ApplicationRecord
 
   def total_revenue_for_invoice
     any_discounts = invoice_items.joins(:discounts)
-      .where('invoice_items.quantity >= discounts.quantity_threshold').distinct
+      .where('invoice_items.quantity >= discounts.quantity_threshold')
     if !any_discounts.empty?
       total = invoice_items.revenue
       apply_discounts(total, any_discounts)
