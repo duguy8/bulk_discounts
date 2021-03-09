@@ -1,0 +1,8 @@
+<%= form_with url: '/signin', method: :post, local: true do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Sign In" %>
+<% end %>

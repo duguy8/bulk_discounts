@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   #home
   root to: 'welcome#index'
 
+  #users
+  resources :users, only: [:new, :create], controller: "customers/users"
+  #users/profile
+  get '/profile', action: :show, controller: "customers/users"
+  #users/signin
+  get '/signin', action: :new, controller: "customers/sessions"
+  post '/signin', action: :create, controller: "customers/sessions"
+  delete '/signin', action: :destroy, controller: "customers/sessions"
+
   #admins
   resources :admin, only: [:index], controller: "admin/dashboard"
 
@@ -13,6 +22,9 @@ Rails.application.routes.draw do
     #admin/merchants
     resources :merchants, only: [:index, :new, :create, :show, :edit, :update]
   end
+
+  #cart
+  resources :cart, only: [:update, :destroy], controller: "customers/cart"
 
   #merchants
   resources :merchants, only: [:index, :show] do

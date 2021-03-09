@@ -22,8 +22,8 @@ RSpec.describe Discount, type: :model do
       @discount1 = create(:discount, merchant_id: @merchant.id, quantity_threshold: 10, percentage_discount: 20)
       @discount2 = create(:discount, merchant_id: @merchant2.id, quantity_threshold: 12, percentage_discount: 20)
 
-      @invoice = create(:invoice)
-      @invoice2 = create(:invoice)
+      @invoice = create(:invoice, status: 1)
+      @invoice2 = create(:invoice, status: 0)
 
       @item1 = create(:item, merchant_id: @merchant.id)
       @item2 = create(:item, merchant_id: @merchant2.id)

@@ -1,4 +1,17 @@
+<div class="container">
 <h1>Welcome to Little Esty Shop</h1>
 <center><img alt="lady shopping"
-src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.hellogiggles.com%2Fuploads%2F2016%2F12%2F22123820%2Fshutterstock_520337155.jpg&f=1&nofb=1"
+src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.home-designing.com%2Fwp-content%2Fuploads%2F2015%2F01%2Fhipster-living-room-design.png&f=1&nofb=1"
 width="460" height="300" align="middle" style="border: 10px solid #555;" ></center>
+
+<br>
+<center>
+<% if @current_user %>
+  <%= button_to "Sign Out", signin_path, method: :delete %>
+<% else %>
+  <%= button_to "Sign In", signin_path, method: :get %>
+  <br>
+  <%= button_to "Register as a User", new_user_path, method: :get %>
+<% end %>
+</center>
+</div>
