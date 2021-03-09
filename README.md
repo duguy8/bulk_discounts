@@ -54,6 +54,9 @@ This application uses custom rake tasks to import CSV data to database tables:
 <li>VCR</li>
 </ul
 
+  ### Styling Gems
+<li>Bootstrap</li>
+
 ## Learning Goals
 
 - Practice designing a normalized database schema and defining model relationships
