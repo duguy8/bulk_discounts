@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   #users
   resources :users, only: [:new, :create], controller: "customers/users"
   #users/profile
-  get 'profile', action: :show, controller: "customers/users"
+  get '/profile', action: :show, controller: "customers/users"
+  #users/signin
+  get '/signin', action: :new, controller: "customers/sessions"
+  post '/signin', action: :create, controller: "customers/sessions"
 
   #admins
   resources :admin, only: [:index], controller: "admin/dashboard"
