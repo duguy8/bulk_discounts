@@ -1,13 +1,12 @@
-
 <p>Items on Invoice: </p>
 <ul>
-<% invoice.invoice_items.each do |invoice_item| %>
-  <section id="invoice_item-<%= invoice_item.id %>">
-    <li><p><%= invoice_item.item.name %>
+  <% invoice.invoice_items.each do |invoice_item| %>
+    <section id="invoice_item-<%= invoice_item.id %>">
+      <li><p><%= invoice_item.item.name %>
         <%= invoice_item.quantity %>
         <%= invoice_item.unit_price %>
         <%= invoice_item.status %>
-    </p></li>
-  </section>
-<% end %>
+      </p></li>
+    </section>
+  <% end %>
 </ul>

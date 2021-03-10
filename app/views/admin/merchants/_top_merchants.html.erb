@@ -1,12 +1,12 @@
 <section id="top_merchants">
 <h3>Top Merchants By Revenue: </h3>
-<center>
-  <ul>
-    <% merchants.top_merchants.each do |merchant| %>
-      <li><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %>
-      Total Revenue: $<%= merchant.revenue %>
-      Top selling date for <%= merchant.name %> was: <%= merchant.top_selling_date %></li>
-    <% end %>
-  </ul>
+  <center>
+    <ul>
+      <% merchants.top_merchants.each do |merchant| %>
+        <li><%= link_to "#{merchant.name}", admin_merchant_path(merchant) %>
+          Total Revenue: $<%= merchant.revenue %>
+          Top selling date for <%= merchant.name %> was: <%= merchant.top_selling_date %></li>
+          <% end %>
+        </ul>
   </center>
 </section>

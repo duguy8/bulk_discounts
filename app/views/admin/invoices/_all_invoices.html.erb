@@ -1,18 +1,18 @@
 <h3>All Invoices: </h3>
-<center>
-  <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table table-hover">
-   <thead>
-     <tr>
-       <th>Invoice ID</th>
-     </tr>
-    </thead>
-  <tbody>
-  <% invoices.each do |invoice| %>
-    <tr><td><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></td></tr>
-  <% end %>
-</center>
-<div class="cl"></div>
-</tbody>
-</table>
+  <center>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Invoice ID</th>
+            </tr>
+          </thead>
+      <tbody>
+          <% invoices.each do |invoice| %>
+            <tr><td><%= link_to "#{invoice.id}", admin_invoice_path(invoice) %></td></tr>
+          <% end %>
+        </center>
+      <div class="cl"></div>
+    </tbody>
+  </table>
 </div>

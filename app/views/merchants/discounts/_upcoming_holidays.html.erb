@@ -5,7 +5,6 @@
       <% holidays.each do |holiday| %>
           <p><%= holiday.name %>
           on: <%= holiday.date %>
-
           <% if holiday.is_a_discount.empty? %>
             <%= button_to "Create Discount",
             new_merchant_holiday_discount_path(@merchant, holiday.name),
@@ -17,5 +16,5 @@
           <% end %>
       <% end %>
     </ul>
-    </center>
+  </center>
 </section>
