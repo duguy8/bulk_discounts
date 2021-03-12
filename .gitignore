@@ -36,4 +36,4 @@ active_designer
 /config/local_env.yml
 
 # API info
-fixtures
+/fixtures
